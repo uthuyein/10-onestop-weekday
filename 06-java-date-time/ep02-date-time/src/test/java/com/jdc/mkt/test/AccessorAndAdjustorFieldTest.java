@@ -9,27 +9,40 @@ import java.time.temporal.ChronoUnit;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class AccessFieldTest {
+public class AccessorAndAdjustorFieldTest {
 	
 	@Test
+	void adjustDateTimeWithFluentTest() {
+		var ldt = LocalDateTime.now();
+		System.out.println(ldt.withMonth(05));
+		System.out.println(ldt.plusMonths(4));
+		System.out.println(ldt.minusHours(4));
+	}
+		
+	@Test
+	@Disabled
 	void adjustDateTimeTest() {
 		var ldt = LocalDateTime.now();
 		
-		//using with temporaladjustor
+		// using with TemporalAdjustor
 		var ldt1 = ldt.with(LocalDate.of(2011, 01, 11));
 		System.out.println(ldt1);
 		
-		// using with temporal amount
+		// using with TemporalField
+		var ldt5 = ldt.with(ChronoField.MONTH_OF_YEAR, 2);
+		System.out.println(ldt5);
+		
+				
+		// using with TemporalAmount
 		var ldt2 = ldt.plus(Period.ofDays(7));
 		System.out.println(ldt2);
 		
 		var ldt3 = ldt.minus(Period.ofMonths(4));
 		System.out.println(ldt3);
 		
-		//using with temporal unit
+		// using with TemporalUnit
 		var ldt4 = ldt.plus(4, ChronoUnit.MONTHS);
 		System.out.println(ldt4);
-		
 		
 	}
 
