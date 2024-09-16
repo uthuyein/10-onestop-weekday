@@ -33,6 +33,16 @@ record Student(String name,int age) {
 		this.age = age;
 	}
 	
+	//Compact Constructor
+//	public Student{
+//		if(name ==  null) {
+//			throw new RuntimeException("Name must not be null");
+//		}
+//		if(age <= 0) {
+//			throw new RuntimeException("Age must greater than 0");
+//		}
+//	}
+	
 	//secondary constructor
 	public Student(String name) {
 		this(name,1);

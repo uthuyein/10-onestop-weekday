@@ -31,5 +31,6 @@
   </build>
   <modules>
   	<module>ep01-lambda</module>
+  	<module>epo2-stream</module>
   </modules>
 </project>
