@@ -13,6 +13,7 @@ class StandardKeyBoard extends KeyBoard{
 		return "standard keyboard";
 	}
 }
+
 class WirelessKeyBoard extends KeyBoard{
 	String getKeyboard() {
 		return "wireless keyboard";
