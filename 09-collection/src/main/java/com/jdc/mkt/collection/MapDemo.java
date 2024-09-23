@@ -1,4 +1,4 @@
-package com.jdc.mkt.map;
+package com.jdc.mkt.collection;
 
 import java.util.Map;
 import java.util.TreeMap;

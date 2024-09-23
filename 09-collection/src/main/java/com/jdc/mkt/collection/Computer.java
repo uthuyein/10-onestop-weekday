@@ -1,4 +1,4 @@
-package com.jdc.mkt.map;
+package com.jdc.mkt.collection;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
