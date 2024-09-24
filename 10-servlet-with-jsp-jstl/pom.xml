@@ -48,5 +48,6 @@
   </build>
   <modules>
   	<module>ep01-srv-lifecycle-and-requesInformation</module>
+  	<module>ep02-servlet-communication</module>
   </modules>
 </project>
