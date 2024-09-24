@@ -36,18 +36,12 @@
 	  		<failOnMissingWebXml>false</failOnMissingWebXml>
 	  	</configuration>
 	  </plugin>
-	  <plugin>
-		  <groupId>org.eclipse.jetty</groupId>
-		  <artifactId>jetty-maven-plugin</artifactId>
-		  <version>11.0.24</version>
-		  <configuration>
-		  	<scan>3</scan>
-		  </configuration>
-	  </plugin>
+	 
   </plugins>
   </build>
   <modules>
   	<module>ep01-srv-lifecycle-and-requesInformation</module>
   	<module>ep02-servlet-communication</module>
+  	<module>ep03-servlet-scope</module>
   </modules>
 </project>

@@ -5,18 +5,14 @@
     <artifactId>10-servlet-with-jsp-jstl</artifactId>
     <version>1.0</version>
   </parent>
-  <artifactId>ep02-servlet-communication</artifactId>
-  <packaging>war</packaging> 
-   <build>
-  	<plugins>
-  		 <plugin>
-		  <groupId>org.eclipse.jetty</groupId>
-		  <artifactId>jetty-maven-plugin</artifactId>
-		  <version>11.0.24</version>
-		  <configuration>
-		  	<scan>3</scan>
-		  </configuration>
-	  </plugin>
-  	</plugins>
-  </build>
+  <artifactId>ep03-servlet-scope</artifactId>
+  <packaging>war</packaging>
+  <dependencies>
+	<dependency>
+	    <groupId>jakarta.servlet.jsp</groupId>
+	    <artifactId>jakarta.servlet.jsp-api</artifactId>
+	    <version>4.0.0</version>
+	    <scope>provided</scope>
+	</dependency>
+  </dependencies>
 </project>
