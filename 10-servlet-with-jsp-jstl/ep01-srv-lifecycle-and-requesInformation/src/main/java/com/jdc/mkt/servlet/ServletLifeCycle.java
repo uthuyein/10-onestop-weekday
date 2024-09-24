@@ -8,11 +8,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/greet")
-public class HelloServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/lifecycle")
+public class ServletLifeCycle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public HelloServlet() {
+	public ServletLifeCycle() {
 		System.out.println("========================= Constructor starting =================");
 	}
 	@Override
