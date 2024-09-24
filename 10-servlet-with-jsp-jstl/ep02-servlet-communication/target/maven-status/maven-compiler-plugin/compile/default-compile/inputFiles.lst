@@ -1,4 +1,8 @@
-/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/ForwardServlet.java
-/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/IncludeServlet.java
-/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/RedirectServlet.java
+/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/communicate/ForwardServlet.java
+/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/communicate/IncludeServlet.java
+/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/communicate/RedirectServlet.java
+/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/toCommunicate/PathServlet.java
+/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/toCommunicate/ToForwardServlet.java
+/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/toCommunicate/ToIncludeServlet.java
+/Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/toCommunicate/ToRedirectServlet.java
 /Users/MKT/Documents/JDC_WorkSpace/Eclipse_Projects/weekday/10-onestop-weekday/10-onestop-weekday/10-servlet-with-jsp-jstl/ep02-servlet-communication/src/main/java/com/jdc/mkt/servlet/util/HeaderServlet.java
