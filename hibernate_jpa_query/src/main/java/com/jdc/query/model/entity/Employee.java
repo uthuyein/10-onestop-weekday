@@ -20,8 +20,8 @@ import lombok.Data;
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
 	@Column(nullable = false,length = 45)
 	private String name;
