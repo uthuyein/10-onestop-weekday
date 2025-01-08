@@ -22,7 +22,7 @@ public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@Column(nullable = false,length = 45)	
 	private String name;
@@ -30,7 +30,7 @@ public class Employee {
 	private LocalDate dob;
 	
 	@ColumnDefault("1")
-	private boolean active;
+	private Boolean active;
 	
 	@ManyToOne
 	private Department department;
