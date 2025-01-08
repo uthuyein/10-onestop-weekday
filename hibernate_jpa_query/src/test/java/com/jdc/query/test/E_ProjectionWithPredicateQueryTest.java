@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import com.jdc.query.model.entity.Department_;
 import com.jdc.query.model.entity.Employee;
 import com.jdc.query.model.entity.Employee_;
-import com.jdc.query.model.entity.dto.EmployeeDto;
+import com.jdc.query.model.entity.dto.SelectEmployee;
 
 public class E_ProjectionWithPredicateQueryTest extends JpaEmfFactory{
 
@@ -16,7 +16,7 @@ public class E_ProjectionWithPredicateQueryTest extends JpaEmfFactory{
 	@CsvSource("Sales")
 	void findByDepNameWithCriteria(String name) {
 		var cb = em.getCriteriaBuilder();
-		var cq = cb.createQuery(EmployeeDto.class);
+		var cq = cb.createQuery(SelectEmployee.class);
 		
 		var root = cq.from(Employee.class);
 		var join = root.join(Employee_.department);
@@ -44,7 +44,7 @@ public class E_ProjectionWithPredicateQueryTest extends JpaEmfFactory{
 				select new com.jdc.query.model.entity.dto.EmployeeDto(
 				e.name,e.dob,e.department.name) from Employee e
 				where e.department.name = :name
-				""",EmployeeDto.class);
+				""",SelectEmployee.class);
 		query.setParameter("name", name);
 		
 		System.out.println("Emp list :"+query.getResultList());
