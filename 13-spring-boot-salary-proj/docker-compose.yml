@@ -1,0 +1,17 @@
+
+volumes:
+  salary-volume:
+
+services:
+  db:
+    image: mysql:latest
+    container_name: salary-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=salaryDb
+      - MYSQL_USER=salaryUser
+      - MYSQL_PASSWORD=salaryPass
+    ports:
+      - 3306:3306
+    volumes:
+      - salary-volume:/var/lib/mysql
