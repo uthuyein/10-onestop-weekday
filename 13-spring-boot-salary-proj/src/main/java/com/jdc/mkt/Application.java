@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.jdc.mkt.model.BaseRepoImpl;
 
 @SpringBootApplication
-@EnableJpaRepositories(repositoryBaseClass = BaseRepoImpl.class)
+@EnableJpaRepositories(
+		repositoryBaseClass = BaseRepoImpl.class)
 public class Application {
 
 	public static void main(String[] args) {
