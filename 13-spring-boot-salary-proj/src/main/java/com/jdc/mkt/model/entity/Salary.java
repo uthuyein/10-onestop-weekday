@@ -1,32 +1,28 @@
 package com.jdc.mkt.model.entity;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "salary_tbl")
 public class Salary {
 
 	@Id
 	private Integer id;
 	private Double amount;
 	
-	@ManyToOne
-	private Employee employee;
-	
-	private LocalDate fromDate;
-	private LocalDate toDate;
+	private Double bonus;
 	
 	@Enumerated(EnumType.STRING)
-	private LeaveType leaveType;
+	private Position position;
 	
-	public enum LeaveType {
-		Annual,Medical,Paid
+	public enum Position{
+		Casual,Permanent,Senior,Manager
 	}
+	
 }
