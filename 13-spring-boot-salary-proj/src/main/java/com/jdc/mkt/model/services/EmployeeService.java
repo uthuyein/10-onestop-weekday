@@ -51,9 +51,6 @@ public class EmployeeService {
 	}
 
 	public List<SelectEmployeeDto> search(SearchEmployeeDto search) {
-		if (null == search) {
-			search = new SearchEmployeeDto(null, null, null, null, null);			
-		}
 		return repo.search(searchFun(search));
 	}
 

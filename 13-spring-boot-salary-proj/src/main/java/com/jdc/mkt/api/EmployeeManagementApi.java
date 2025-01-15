@@ -1,5 +1,6 @@
 package com.jdc.mkt.api;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,15 @@ public class EmployeeManagementApi {
 	private final EmployeeService service;
 	
 	@GetMapping
-	List<SelectEmployeeDto> search(@RequestAttribute(required = false) SearchEmployeeDto searchEmployeeDto	){
-		return service.search(searchEmployeeDto) ;
+	ResponseEntity< List<SelectEmployeeDto>> search(
+			@RequestParam(required = false)String employee,
+			@RequestParam(required = false)String department,
+			@RequestParam(required = false)boolean active,
+			@RequestParam(required = false)LocalDate from,
+			@RequestParam(required = false)LocalDate to
+			){
+		var search = new SearchEmployeeDto(employee, department, active, from, to);
+		return new ResponseEntity<List<SelectEmployeeDto>> (service.search(search),HttpStatus.OK) ;
 	}
 	
 	@PostMapping
