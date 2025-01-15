@@ -18,7 +18,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 @Service
 @Transactional(readOnly = true)
 public class EmployeeService {
-	
+
 	@Autowired
 	private EmployeeRepo repo;
 
@@ -26,7 +26,7 @@ public class EmployeeService {
 	public Employee saveEmployee(Employee e) {
 		return repo.save(e);
 	}
-	
+
 	@Transactional
 	public Employee updateEmployee(int id, Employee e) {
 		var opt = repo.findById(id);
@@ -35,34 +35,37 @@ public class EmployeeService {
 		emp.setDob(e.getDob());
 		emp.setDepartment(e.getDepartment());
 		emp.setActive(e.getActive());
-		
+
 		return repo.save(emp);
 	}
-	
+
 	@Transactional
 	public void deleteEmployee(int id) {
 		var opt = repo.findById(id);
-		var emp = opt.orElseThrow(() ->  new NullPointerException("There is no enitity for that id "));
+		var emp = opt.orElseThrow(() -> new NullPointerException("There is no enitity for that id "));
 		repo.delete(emp);
 	}
-	
-	public List<Employee> searchAll(){
+
+	public List<Employee> searchAll() {
 		return repo.findAll();
 	}
-	
-	public List<SelectEmployeeDto> search(SearchEmployeeDto search){
+
+	public List<SelectEmployeeDto> search(SearchEmployeeDto search) {
+		if (null == search) {
+			search = new SearchEmployeeDto(null, null, null, null, null);			
+		}
 		return repo.search(searchFun(search));
 	}
 
-	private Function<CriteriaBuilder,CriteriaQuery<SelectEmployeeDto>> searchFun(SearchEmployeeDto search) {
-		Function<CriteriaBuilder,CriteriaQuery<SelectEmployeeDto>> fun = cb -> {
+	private Function<CriteriaBuilder, CriteriaQuery<SelectEmployeeDto>> searchFun(SearchEmployeeDto search) {
+		Function<CriteriaBuilder, CriteriaQuery<SelectEmployeeDto>> fun = cb -> {
 			var cq = cb.createQuery(SelectEmployeeDto.class);
 			var root = cq.from(Employee.class);
-			
+
 			SelectEmployeeDto.select(cq, root);
-			
+
 			cq.where(search.search(cb, cq, root));
-			
+
 			return cq;
 		};
 		return fun;

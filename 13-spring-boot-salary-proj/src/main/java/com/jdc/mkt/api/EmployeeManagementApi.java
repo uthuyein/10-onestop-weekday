@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jdc.mkt.model.entity.Employee;
 import com.jdc.mkt.model.input.SearchEmployeeDto;
-import com.jdc.mkt.model.output.SelectDepartmentDto;
 import com.jdc.mkt.model.output.SelectEmployeeDto;
 import com.jdc.mkt.model.services.EmployeeService;
 
@@ -31,8 +30,8 @@ public class EmployeeManagementApi {
 	private final EmployeeService service;
 	
 	@GetMapping
-	List<SelectEmployeeDto> search( @RequestParam(required = false)  String  name){
-		return service.search(new SearchEmployeeDto(name, null, null, null, null)) ;
+	List<SelectEmployeeDto> search(@RequestAttribute(required = false) SearchEmployeeDto searchEmployeeDto	){
+		return service.search(searchEmployeeDto) ;
 	}
 	
 	@PostMapping
