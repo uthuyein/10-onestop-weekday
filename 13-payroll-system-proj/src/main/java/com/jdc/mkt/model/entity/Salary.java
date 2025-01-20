@@ -18,10 +18,8 @@ public class Salary {
 	@Id
 	private Integer id;
 
-	private Double bonus;
-	
-	private Double BasicPay;
-	private Double Allowances;
+	private Double basicPay;
+	private Double allowances;
 	
 	private Double netSalary;
 	
