@@ -1,5 +1,6 @@
 package com.jdc.mkt.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -34,11 +35,16 @@ public class Department {
 	@OneToMany(mappedBy = "department",
 			cascade = CascadeType.PERSIST,
 			orphanRemoval = true)
-	private List<Employee> employees;
+	private List<Employee> employees = new ArrayList<Employee>();
 	
 	@Override
 	public String toString() {
 		return name;
+	}
+	
+	public void addEmployee(Employee employee) {
+		employees.add(employee);
+		employee.setDepartment(this);
 	}
 }
 

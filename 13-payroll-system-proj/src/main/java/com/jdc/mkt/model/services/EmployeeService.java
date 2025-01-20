@@ -3,27 +3,33 @@ package com.jdc.mkt.model.services;
 import java.util.List;
 import java.util.function.Function;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.mkt.model.entity.Employee;
 import com.jdc.mkt.model.input.SearchEmployeeDto;
 import com.jdc.mkt.model.output.SelectEmployeeDto;
+import com.jdc.mkt.model.repo.DepartmentRepo;
 import com.jdc.mkt.model.repo.EmployeeRepo;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class EmployeeService {
-
-	@Autowired
-	private EmployeeRepo repo;
+	
+	private final EmployeeRepo repo;
+	private final DepartmentRepo depRepo;
 
 	@Transactional
 	public Employee saveEmployee(Employee e) {
+		var dep = depRepo.findById(e.getDepartment().getId())
+				.orElseThrow(
+				()-> new NullPointerException("There is no department for that id"));
+		e.setDepartment(dep);
 		return repo.save(e);
 	}
 
@@ -33,6 +39,7 @@ public class EmployeeService {
 		var emp = opt.orElseThrow();
 		emp.setName(e.getName());
 		emp.setDob(e.getDob());
+	
 		emp.setDepartment(e.getDepartment());
 		emp.setActive(e.getActive());
 
@@ -46,9 +53,6 @@ public class EmployeeService {
 		repo.delete(emp);
 	}
 
-	public List<Employee> searchAll() {
-		return repo.findAll();
-	}
 
 	public List<SelectEmployeeDto> search(SearchEmployeeDto search) {
 		return repo.search(searchFun(search));

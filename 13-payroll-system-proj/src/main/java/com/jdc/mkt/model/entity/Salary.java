@@ -25,9 +25,10 @@ public class Salary {
 	
 	private Double netSalary;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "salary")
 	private List<Deduction>  deductions;
-	@OneToMany
+	
+	@OneToMany(mappedBy = "salary")
 	private List<Bonus> bonuses;
 	
 	@Enumerated(EnumType.STRING)
