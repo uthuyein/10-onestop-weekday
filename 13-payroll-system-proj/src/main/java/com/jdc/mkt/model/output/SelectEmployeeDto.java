@@ -2,8 +2,6 @@ package com.jdc.mkt.model.output;
 
 import java.time.LocalDate;
 
-import org.hibernate.query.Order;
-
 import com.jdc.mkt.model.entity.Department_;
 import com.jdc.mkt.model.entity.Employee;
 import com.jdc.mkt.model.entity.Employee_;

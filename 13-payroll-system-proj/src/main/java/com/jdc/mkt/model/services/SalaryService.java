@@ -30,7 +30,6 @@ public class SalaryService {
 		return cb -> {
 			var cq = cb.createQuery(SelectSalaryDto.class);
 			var root = cq.from(Salary.class);
-			SelectSalaryDto.select(cq, root);
 			cq.where(search.search(cb, cq, root));
 			return cq;
 		};

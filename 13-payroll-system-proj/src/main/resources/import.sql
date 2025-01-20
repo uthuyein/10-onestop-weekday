@@ -8,8 +8,3 @@ insert into employee_tbl(name,dob,department_id,active)values('John','2000-11-13
 insert into employee_tbl(name,dob,department_id,active)values('Snowei','2001-09-21',2,1);
 insert into employee_tbl(name,dob,department_id,active)values('Susan','1999-09-22',3,1);
 insert into employee_tbl(name,dob,department_id,active)values('Samlew','1990-10-23',3,1);
-
-insert into salary_tbl(amount,bonus,position,employee_id)values (250000,20000,'Casual',1);
-insert into salary_tbl(amount,bonus,position,employee_id)values (400000,50000,'Senior',3);
-insert into salary_tbl(amount,bonus,position,employee_id)values (300000,20000,'Permanent',6);
-insert into salary_tbl(amount,bonus,position,employee_id)values (500000,50000,'Manager',6);

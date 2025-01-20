@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -23,6 +24,9 @@ public class Leave {
 	private LocalDate fromDt;
 	private LocalDate toDt;
 	private String reason;
+	
+	@ManyToOne
+	private Employee employee;
 	
 	@Enumerated(EnumType.STRING)
 	private LeaveType leaveType;

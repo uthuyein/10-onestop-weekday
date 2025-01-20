@@ -1,12 +1,12 @@
 package com.jdc.mkt.model.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -16,14 +16,19 @@ import lombok.Data;
 public class Salary {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Double amount;
-	
+
 	private Double bonus;
 	
-	@ManyToOne
-	private Employee employee;
+	private Double BasicPay;
+	private Double Allowances;
+	
+	private Double netSalary;
+	
+	@OneToMany
+	private List<Deduction>  deductions;
+	@OneToMany
+	private List<Bonus> bonuses;
 	
 	@Enumerated(EnumType.STRING)
 	private Position position;
@@ -31,5 +36,4 @@ public class Salary {
 	public enum Position{
 		Casual,Permanent,Senior,Manager
 	}
-	
 }
