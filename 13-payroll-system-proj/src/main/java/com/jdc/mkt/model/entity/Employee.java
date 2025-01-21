@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.ColumnDefault;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,7 +30,7 @@ public class Employee {
 	
 	private LocalDate dob;
 	
-	@ColumnDefault("1")
+	@Column(columnDefinition = "tinyint default 1")
 	private Boolean active;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -24,10 +24,10 @@ public record SearchDepartmentDto(
 		var join = root.join(Department_.employees);
 		
 		if(StringUtils.hasLength(keyword)) {
-			cb.or(
+			   params.add(  cb.or(
 					 cb.equal(root.get(Department_.name), keyword),
 					cb.like(cb.lower(join.get(Employee_.name)), keyword.toLowerCase().concat("%"))			
-					);
+					));
 		}
 		
 		return params.toArray(size -> new Predicate[size]);

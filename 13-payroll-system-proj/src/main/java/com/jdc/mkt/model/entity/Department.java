@@ -3,8 +3,6 @@ package com.jdc.mkt.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.ColumnDefault;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,11 +27,11 @@ public class Department {
 	@Column(nullable = false , length = 45)
 	private String name;
 	
-	@ColumnDefault("1")
+	@Column(columnDefinition = "tinyint default 1")
 	private boolean active;
 	
 	@OneToMany(mappedBy = "department",
-			cascade = CascadeType.PERSIST,
+			cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},
 			orphanRemoval = true)
 	private List<Employee> employees = new ArrayList<Employee>();
 	
@@ -42,9 +40,12 @@ public class Department {
 		return name;
 	}
 	
-	public void addEmployee(Employee employee) {
-		employees.add(employee);
-		employee.setDepartment(this);
+	public void addEmployee(List<Employee>  empList) {
+		for(Employee employee : empList) {
+            employee.setDepartment(this);
+        }
+		employees.addAll(empList);
+		
 	}
 }
 

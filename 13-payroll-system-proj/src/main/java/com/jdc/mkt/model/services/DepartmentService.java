@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.mkt.model.entity.Department;
 import com.jdc.mkt.model.input.SearchDepartmentDto;
@@ -15,10 +16,39 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 
 @Service
+@Transactional(readOnly = true)
 public class DepartmentService {
 
 	@Autowired
 	private DepartmentRepo repo;
+	
+	@Transactional
+	public Department save(Department department) {
+		department.addEmployee(department.getEmployees());	
+		return repo.save(department);
+	}
+	
+	@Transactional	
+	public Department update(int id, Department department) {
+		var dep = repo.findById(id).orElseThrow(() -> new RuntimeException("No Department ID Found"));
+		dep.setName(department.getName());
+		dep.setActive(department.isActive());
+		
+		// Check if orphan removel is true
+		var emps = dep.getEmployees();
+		System.out.println("Employee Size :::::"+emps.size());
+		
+		emps.remove(0);		
+		dep.addEmployee(emps);
+		
+		return repo.save(dep);
+	}
+	
+	@Transactional
+	public void delete(int id) {
+		var dep = repo.findById(id).orElseThrow(() -> new RuntimeException("No Department ID Found"));
+		repo.delete(dep);
+	}
 	
 	public List<SelectDepartmentDto> search(SearchDepartmentDto search){
 		return repo.search(searchFun(search));

@@ -39,7 +39,7 @@ public class EmployeeService {
 		var emp = opt.orElseThrow();
 		emp.setName(e.getName());
 		emp.setDob(e.getDob());
-	
+
 		emp.setDepartment(e.getDepartment());
 		emp.setActive(e.getActive());
 

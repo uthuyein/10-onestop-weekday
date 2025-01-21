@@ -2,8 +2,6 @@ package com.jdc.mkt.model.input;
 
 import java.util.ArrayList;
 
-import org.springframework.util.StringUtils;
-
 import com.jdc.mkt.model.entity.Salary;
 import com.jdc.mkt.model.entity.Salary.Position;
 import com.jdc.mkt.model.entity.Salary_;
