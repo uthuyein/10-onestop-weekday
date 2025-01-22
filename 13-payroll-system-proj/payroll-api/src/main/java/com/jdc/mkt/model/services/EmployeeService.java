@@ -37,10 +37,10 @@ public class EmployeeService {
 	public Employee updateEmployee(int id, Employee e) {
 		var opt = repo.findById(id);
 		var emp = opt.orElseThrow();
-		emp.setName(e.getName());
-		emp.setDob(e.getDob());
+		emp.setName(null != e.getName()? e.getName():emp.getName());
+		emp.setDob(null != e.getDob()? e.getDob():emp.getDob());
 
-		emp.setDepartment(e.getDepartment());
+		emp.setDepartment(null != e.getDepartment()? e.getDepartment():emp.getDepartment());
 		emp.setActive(e.getActive());
 
 		return repo.save(emp);

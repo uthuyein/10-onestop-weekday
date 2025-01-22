@@ -19,7 +19,7 @@ public class Bonus {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private double amount;
+	private Double amount;
 	private LocalDate dateAward;
 	
 	@ManyToOne

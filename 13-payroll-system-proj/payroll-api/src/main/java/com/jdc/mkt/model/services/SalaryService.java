@@ -6,6 +6,7 @@ import java.util.function.Function;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jdc.mkt.model.entity.Bonus;
 import com.jdc.mkt.model.entity.Salary;
 import com.jdc.mkt.model.input.SearchSalaryDto;
 import com.jdc.mkt.model.output.SelectSalaryDto;
@@ -17,10 +18,52 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class SalaryService {
 
 	private final SalaryRepo repo;
+	private final BonusService bonusService;
+	
+	@Transactional
+	public void delete(int id) {
+		var sal = repo.findById(id).orElseThrow(() -> new RuntimeException("No Salary ID Found"));
+		repo.delete(sal);
+	}
+	
+	
+	@Transactional
+	public Salary updateSalary(int id,Salary salary) {	
+		var sal = repo.findById(id).orElseThrow(() -> new RuntimeException("No Salary ID Found"));
+					
+		sal.setBasicPay(salary.getBasicPay());
+		sal.setNetSalary(salary.getNetSalary());
+		sal.setPosition(salary.getPosition());
+		sal.setAllowances(salary.getAllowances());
+		
+		updateBonus(sal.getBonuses());
+	
+		return repo.save(sal);
+	}
+	
+	public void updateBonus(List<Bonus> list) {
+		if (null != list) {
+			for (Bonus b : list) {
+				bonusService.update(b.getId(), b);
+			}			
+			
+		}
+		
+	}
+	
+	
+	
+	@Transactional
+	public Salary save(Salary salary) {
+		var bonuses = salary.getBonuses();
+		var deductions = salary.getDeductions();
+		salary.addBonus(bonuses);
+		salary.addDeduction(deductions);
+		return repo.save(salary);
+	}
 	
 	public List<SelectSalaryDto> searchBy(SearchSalaryDto search){
 		return repo.search(searchFun(search));

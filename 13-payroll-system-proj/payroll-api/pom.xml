@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jdc.mkt</groupId>
-	<artifactId>13-spring-boot-salary-proj</artifactId>
+	<artifactId>payroll-api</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>13-payroll-system-proj</name>
+	<name>payroll-api</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

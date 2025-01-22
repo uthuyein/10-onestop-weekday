@@ -34,11 +34,7 @@ public class DepartmentService {
 		dep.setName(department.getName());
 		dep.setActive(department.isActive());
 		
-		// Check if orphan removel is true
 		var emps = dep.getEmployees();
-		System.out.println("Employee Size :::::"+emps.size());
-		
-		emps.remove(0);		
 		dep.addEmployee(emps);
 		
 		return repo.save(dep);
