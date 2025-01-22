@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.mkt.model.entity.Bonus;
+import com.jdc.mkt.model.entity.Deduction;
 import com.jdc.mkt.model.entity.Salary;
 import com.jdc.mkt.model.input.SearchSalaryDto;
 import com.jdc.mkt.model.output.SelectSalaryDto;
@@ -22,6 +23,7 @@ public class SalaryService {
 
 	private final SalaryRepo repo;
 	private final BonusService bonusService;
+	private final DeductionService deductionService;
 	
 	@Transactional
 	public void delete(int id) {
@@ -40,18 +42,26 @@ public class SalaryService {
 		sal.setAllowances(salary.getAllowances());
 		
 		updateBonus(sal.getBonuses());
+		updateDeduction(sal.getDeductions());
 	
 		return repo.save(sal);
 	}
 	
+	private void updateDeduction(List<Deduction> deductions) {
+		if(null != deductions) {
+            for(Deduction d : deductions) {
+            	deductionService.update(d.getId(), d);
+            }
+		}
+	}
+
+
 	public void updateBonus(List<Bonus> list) {
 		if (null != list) {
 			for (Bonus b : list) {
 				bonusService.update(b.getId(), b);
-			}			
-			
-		}
-		
+			}						
+		}	
 	}
 	
 	

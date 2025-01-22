@@ -24,7 +24,6 @@ public class Payroll {
 	private Salary salary;
 	
 	@ManyToOne
-	@MapsId("leaveId")
 	private Leave leave;
 	
 	private Double totalAmount;
