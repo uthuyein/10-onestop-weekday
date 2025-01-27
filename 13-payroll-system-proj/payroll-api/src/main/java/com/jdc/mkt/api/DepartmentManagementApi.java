@@ -27,32 +27,30 @@ import lombok.RequiredArgsConstructor;
 public class DepartmentManagementApi {
 
 	private final DepartmentService service;
-	
+
 	@DeleteMapping("/delete")
 	public ResponseEntity<String> delete(@RequestParam int id) {
-        service.delete(id);
-        return new ResponseEntity<String>("Delete Successfully", HttpStatus.OK);
+		service.delete(id);
+		return new ResponseEntity<String>("Delete Successfully", HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update(@PathVariable int id , @RequestBody Department department) {
-		var dep = service.update(id,department);
+	public ResponseEntity<String> update(@PathVariable int id, @RequestBody Department department) {
+		var dep = service.update(id, department);
 		return new ResponseEntity<String>("Update Successfully with the name of " + dep.getName(), HttpStatus.CREATED);
 	}
-	
+
 	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Department department) {
 		var dep = service.save(department);
-		return new ResponseEntity<String>("Save Successfully with the name of "+dep.getName(), HttpStatus.CREATED);
+		return new ResponseEntity<String>("Save Successfully with the name of " + dep.getName(), HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<List<SelectDepartmentDto>> searchBy(
-			@RequestParam(required = false) String department) {
-		
-			var dto = new SearchDepartmentDto(department);
-		
-		System.out.println("Departments :::::"+dto.keyword());
+	public ResponseEntity<List<SelectDepartmentDto>> searchBy(@RequestParam(required = false) String department) {
+
+		var dto = new SearchDepartmentDto(department);
+
 		return new ResponseEntity<List<SelectDepartmentDto>>(service.search(dto), HttpStatus.OK);
 	}
 }

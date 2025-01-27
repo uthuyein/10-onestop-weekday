@@ -29,16 +29,14 @@ public class EmployeeManagementApi {
 	private final EmployeeService service;
 	
 	@GetMapping
-	 ResponseEntity< List<SelectEmployeeDto> >search(
+	  List<SelectEmployeeDto> search(
 			@RequestBody(required = false) SearchEmployeeDto search){
 			
 			if (null == search) {
 				search = new SearchEmployeeDto(null, null, null, null, null);
 			}
-			System.out.println("search :"+search.department());
-			
-			
-		return new ResponseEntity<List<SelectEmployeeDto>> (service.search(search),HttpStatus.OK);
+					
+		return service.search(search);
 		
 	}
 	
