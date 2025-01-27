@@ -1,28 +1,26 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import Api from "../../services/Api";
-import Home from "../home/Home";
 
-const  EmployeeList = () => {
-    const [employees,setEmployee] = useState([]);
-    const [loading,setLoading] = useState([]);
+const EmployeeList = () => {
+  const [employees, setEmployee] = useState([]);
+  const [loading, setLoading] = useState([]);
 
-    useEffect(()=> {
-        Api.get("/employees")
-        .then((response) => {
-            setEmployee(response.data);
-            setLoading(false)
-        })
-        .catch((error) => {
-            console.error("Error Fetching Employee",error);
-            setLoading(false)
-        });
-    },[]);
+  useEffect(() => {
+    Api.get("/employees")
+      .then((response) => {
+        setEmployee(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error Fetching Employee", error);
+        setLoading(false);
+      });
+  }, []);
 
- if (loading) return <p>Loading Employees ......</p>  
+  if (loading) return <p>Loading Employees ......</p>;
 
- return(
-   <div>
-      <Home/>
+  return (
+    <div className="p-5">
       <h2 className="text-2xl font-bold mb-4">Employee List</h2>
       <table className="table">
         <thead>
@@ -34,20 +32,17 @@ const  EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          {employees.map((emp) => (  
-          <tr  key={emp.id}>
-            <td className="col">1</td>
-            <td className="col">{emp.department}</td>
-            <td className="col">{emp.employee}</td>
-            <td className="col">{emp.dob}</td>         
-          </tr>
-          ))
-          }
+          {employees.map((emp) => (
+            <tr key={emp.id}>
+              <td className="col">1</td>
+              <td className="col">{emp.department}</td>
+              <td className="col">{emp.employee}</td>
+              <td className="col">{emp.dob}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      
     </div>
- );
+  );
 };
-export default EmployeeList ;
-
+export default EmployeeList;
